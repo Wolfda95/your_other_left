@@ -88,7 +88,7 @@
           </div>
 
 <!-- ############################################################
-     # Top Buttons (Paper, arXiv, Video, Code, Data-dropdown)
+     # Top Buttons (Paper | arXiv | Video | Code | Data-dropdown)
      ############################################################ -->
 <div class="column has-text-centered">
   <div class="publication-links">
@@ -130,30 +130,26 @@
     </span>
 
     <!-- Data (dropdown) -->
-    <span class="link-block">
-      <div id="data-dropdown" class="dropdown">
-        <!-- Toggle -->
-        <div class="dropdown-trigger">
-          <button class="button is-normal is-rounded is-dark"
-                  aria-haspopup="true" aria-controls="dropdown-menu-data">
-            <span class="icon"><i class="far fa-images"></i></span>
-            <span>Data</span>
-            <span class="icon is-small"><i class="fas fa-angle-down" aria-hidden="true"></i></span>
-          </button>
-        </div>
+    <span class="link-block dropdown" id="data-dropdown">
+      <!-- toggle button -->
+      <a class="external-link button is-normal is-rounded is-dark"
+         role="button" aria-haspopup="true" aria-controls="dropdown-menu-data">
+        <span class="icon"><i class="far fa-images"></i></span>
+        <span>Data</span>
+        <span class="icon is-small"><i class="fas fa-angle-down" aria-hidden="true"></i></span>
+      </a>
 
-        <!-- Menu -->
-        <div class="dropdown-menu" id="dropdown-menu-data" role="menu">
-          <div class="dropdown-content">
-            <a href="https://huggingface.co/datasets/Wolfda95/MIRP_Your_Other_Left"
-               class="dropdown-item" target="_blank" rel="noopener">
-              Download&nbsp;from&nbsp;HuggingFace
-            </a>
-            <a href="https://drive.google.com/file/d/1ILjP6koHgHI7pkXcoce70nNncyz-48KM/view?usp=sharing"
-               class="dropdown-item" target="_blank" rel="noopener">
-              Download&nbsp;from&nbsp;Google&nbsp;Drive
-            </a>
-          </div>
+      <!-- dropdown menu -->
+      <div class="dropdown-menu" id="dropdown-menu-data" role="menu">
+        <div class="dropdown-content">
+          <a href="https://huggingface.co/datasets/Wolfda95/MIRP_Your_Other_Left"
+             class="dropdown-item" target="_blank" rel="noopener">
+            Download&nbsp;from&nbsp;HuggingFace
+          </a>
+          <a href="https://drive.google.com/file/d/1ILjP6koHgHI7pkXcoce70nNncyz-48KM/view?usp=sharing"
+             class="dropdown-item" target="_blank" rel="noopener">
+            Download&nbsp;from&nbsp;Google&nbsp;Drive
+          </a>
         </div>
       </div>
     </span>
@@ -161,7 +157,6 @@
   </div>
 </div>
 <!-- /Top Buttons -->
-
 
 
 <!-- ############################################################
@@ -248,16 +243,17 @@
   document.addEventListener('DOMContentLoaded', () => {
     const dd = document.getElementById('data-dropdown');
     if (dd) {
-      // Toggle dropdown
+      // open / close on click
       dd.addEventListener('click', e => {
         e.stopPropagation();
         dd.classList.toggle('is-active');
       });
-      // Close when clicking elsewhere
+      // close if the user clicks anywhere else
       document.addEventListener('click', () => dd.classList.remove('is-active'));
     }
   });
 </script>
+
 
 </body>
 </html>
