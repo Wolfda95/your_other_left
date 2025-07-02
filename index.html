@@ -131,15 +131,15 @@
 
     <!-- Data (dropdown) -->
     <div class="link-block dropdown" id="data-dropdown">
-      <!-- toggle -->
-      <a class="external-link button is-normal is-rounded is-dark"
-         role="button" aria-haspopup="true" aria-controls="dropdown-menu-data">
-        <span class="icon"><i class="far fa-images"></i></span>
-        <span>Data</span>
-        <span class="icon is-small"><i class="fas fa-angle-down"></i></span>
-      </a>
+      <div class="dropdown-trigger">
+        <button class="button is-normal is-rounded is-dark"
+                aria-haspopup="true" aria-controls="dropdown-menu-data">
+          <span class="icon"><i class="far fa-images"></i></span>
+          <span>Data</span>
+          <span class="icon is-small"><i class="fas fa-angle-down"></i></span>
+        </button>
+      </div>
 
-      <!-- menu -->
       <div class="dropdown-menu" id="dropdown-menu-data" role="menu">
         <div class="dropdown-content">
           <a href="https://huggingface.co/datasets/Wolfda95/MIRP_Your_Other_Left"
