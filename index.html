@@ -88,10 +88,11 @@
           </div>
 
 <!-- ############################################################
-     #Top Buttons
+     # Top Buttons (Paper, arXiv, Video, Code, Data-dropdown)
      ############################################################ -->
 <div class="column has-text-centered">
   <div class="publication-links">
+
     <!-- Paper -->
     <span class="link-block">
       <a href="https://wolfda95.github.io/your_other_left/"
@@ -131,7 +132,7 @@
     <!-- Data (dropdown) -->
     <span class="link-block">
       <div id="data-dropdown" class="dropdown">
-        <!-- Toggle button -->
+        <!-- Toggle -->
         <div class="dropdown-trigger">
           <button class="button is-normal is-rounded is-dark"
                   aria-haspopup="true" aria-controls="dropdown-menu-data">
@@ -141,7 +142,7 @@
           </button>
         </div>
 
-        <!-- Dropdown menu -->
+        <!-- Menu -->
         <div class="dropdown-menu" id="dropdown-menu-data" role="menu">
           <div class="dropdown-content">
             <a href="https://huggingface.co/datasets/Wolfda95/MIRP_Your_Other_Left"
@@ -156,25 +157,11 @@
         </div>
       </div>
     </span>
+
   </div>
 </div>
 <!-- /Top Buttons -->
 
-<!-- Put this just before </body> (after Bulma, jQuery, etc.) -->
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const dd = document.getElementById('data-dropdown');
-    if (dd) {
-      // Toggle on click
-      dd.addEventListener('click', e => {
-        e.stopPropagation();
-        dd.classList.toggle('is-active');
-      });
-      // Close if anything else is clicked
-      document.addEventListener('click', () => dd.classList.remove('is-active'));
-    }
-  });
-</script>
 
 
 <!-- ############################################################
@@ -256,6 +243,21 @@
     </div>
   </div>
 </footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const dd = document.getElementById('data-dropdown');
+    if (dd) {
+      // Toggle dropdown
+      dd.addEventListener('click', e => {
+        e.stopPropagation();
+        dd.classList.toggle('is-active');
+      });
+      // Close when clicking elsewhere
+      document.addEventListener('click', () => dd.classList.remove('is-active'));
+    }
+  });
+</script>
 
 </body>
 </html>
