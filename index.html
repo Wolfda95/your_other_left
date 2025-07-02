@@ -87,55 +87,95 @@
             </span>
           </div>
 
-          <!-- ############################################################
-               #Top Buttoms: [ToDo: Links]
-               ############################################################ -->
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <span class="link-block">
-                <a href="https://wolfda95.github.io/your_other_left/"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://wolfda95.github.io/your_other_left/"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="ai ai-arxiv"></i></span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://wolfda95.github.io/your_other_left/"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fab fa-youtube"></i></span>
-                  <span>Video</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://wolfda95.github.io/your_other_left/"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fab fa-github"></i></span>
-                  <span>Code</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://wolfda95.github.io/your_other_left/"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="far fa-images"></i></span>
-                  <span>Data</span>
-                </a>
-              </span>
-            </div>
-          </div>
-          <!-- /Top Buttons -->
+<!-- ############################################################
+     #Top Buttons
+     ############################################################ -->
+<div class="column has-text-centered">
+  <div class="publication-links">
+    <!-- Paper -->
+    <span class="link-block">
+      <a href="https://wolfda95.github.io/your_other_left/"
+         class="external-link button is-normal is-rounded is-dark">
+        <span class="icon"><i class="fas fa-file-pdf"></i></span>
+        <span>Paper</span>
+      </a>
+    </span>
 
+    <!-- arXiv -->
+    <span class="link-block">
+      <a href="https://wolfda95.github.io/your_other_left/"
+         class="external-link button is-normal is-rounded is-dark">
+        <span class="icon"><i class="ai ai-arxiv"></i></span>
+        <span>arXiv</span>
+      </a>
+    </span>
+
+    <!-- Video -->
+    <span class="link-block">
+      <a href="https://wolfda95.github.io/your_other_left/"
+         class="external-link button is-normal is-rounded is-dark">
+        <span class="icon"><i class="fab fa-youtube"></i></span>
+        <span>Video</span>
+      </a>
+    </span>
+
+    <!-- Code -->
+    <span class="link-block">
+      <a href="https://wolfda95.github.io/your_other_left/"
+         class="external-link button is-normal is-rounded is-dark">
+        <span class="icon"><i class="fab fa-github"></i></span>
+        <span>Code</span>
+      </a>
+    </span>
+
+    <!-- Data (dropdown) -->
+    <span class="link-block">
+      <div id="data-dropdown" class="dropdown">
+        <!-- Toggle button -->
+        <div class="dropdown-trigger">
+          <button class="button is-normal is-rounded is-dark"
+                  aria-haspopup="true" aria-controls="dropdown-menu-data">
+            <span class="icon"><i class="far fa-images"></i></span>
+            <span>Data</span>
+            <span class="icon is-small"><i class="fas fa-angle-down" aria-hidden="true"></i></span>
+          </button>
+        </div>
+
+        <!-- Dropdown menu -->
+        <div class="dropdown-menu" id="dropdown-menu-data" role="menu">
+          <div class="dropdown-content">
+            <a href="https://huggingface.co/datasets/Wolfda95/MIRP_Your_Other_Left"
+               class="dropdown-item" target="_blank" rel="noopener">
+              Download&nbsp;from&nbsp;HuggingFace
+            </a>
+            <a href="https://drive.google.com/file/d/1ILjP6koHgHI7pkXcoce70nNncyz-48KM/view?usp=sharing"
+               class="dropdown-item" target="_blank" rel="noopener">
+              Download&nbsp;from&nbsp;Google&nbsp;Drive
+            </a>
+          </div>
         </div>
       </div>
-    </div>
+    </span>
   </div>
-</section>
+</div>
+<!-- /Top Buttons -->
+
+<!-- Put this just before </body> (after Bulma, jQuery, etc.) -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const dd = document.getElementById('data-dropdown');
+    if (dd) {
+      // Toggle on click
+      dd.addEventListener('click', e => {
+        e.stopPropagation();
+        dd.classList.toggle('is-active');
+      });
+      // Close if anything else is clicked
+      document.addEventListener('click', () => dd.classList.remove('is-active'));
+    }
+  });
+</script>
+
 
 <!-- ############################################################
      #Top Box: [ToDo: Text]
