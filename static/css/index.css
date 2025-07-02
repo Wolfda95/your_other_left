@@ -2,10 +2,10 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
-/* Make the dropdown behave like the other inline buttons */
+/* Make the dropdown behave like the inline buttons beside it */
 .publication-links .dropdown {
-  display: inline-block;
-  vertical-align: top;   /* matches Bulma buttons’ baseline */
+  display: inline-block;       /* stay on one line */
+  vertical-align: top;         /* align baseline with other buttons */
 }
 
 .footer .icon-link {
