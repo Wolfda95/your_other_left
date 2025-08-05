@@ -205,25 +205,50 @@
 <section class="section">
   <div class="container is-max-desktop">
 
-    <!-- RQ1 -->
-    <h3 class="title is-4 has-text-weight-bold">
-      RQ1: Can current top-tier VLMs accurately determine relative positions in radiological images?
-    </h3>
-
-    <!-- no fixed aspect ratio class ↓ -->
+    <!-- RQ1 (normal size, bold) -->
+    <p class="has-text-weight-bold">
+      Research Question 1: Can current top-tier VLMs accurately determine relative positions in radiological images?
+    </p>
     <figure class="image mt-4">
       <img src="static/images/1.PNG" alt="Overview for RQ1">
     </figure>
     <p class="mt-2">→ All models fail at this basic task</p>
 
-    <!-- RQ2 -->
-    <h3 class="title is-4 has-text-weight-bold mt-5">
-      RQ2: Can visual markers improve VLMs’ ability to determine relative positions in radiological images?
-    </h3>
+    <!-- RQ2 (normal size, bold) -->
+    <p class="has-text-weight-bold mt-5">
+      Research Question 2: Can visual markers improve VLMs’ ability to determine relative positions in radiological images?
+    </p>
     <figure class="image mt-4">
-      <img src="static/images/Overview.png" alt="Overview for RQ2">
+      <img src="static/images/2.PNG" alt="Overview for RQ2">
     </figure>
     <p class="mt-2">→ Markers bring no significant improvements</p>
+
+    <!-- RQ3 (normal size, bold) -->
+    <p class="has-text-weight-bold mt-5">
+      Research Question 3: Do VLMs prioritize prior anatomical knowledge over visual input when determining relative positions in radiological images?
+    </p>
+    <p>
+      (1) Do VLMs’ responses align with standard human anatomy?
+    </p>
+    <figure class="image mt-4">
+      <img src="static/images/3.PNG" alt="Overview for RQ2">
+    </figure>
+    <p>
+      (2) How well do VLMs perform when prior knowledge cannot be used?
+    </p>
+    <figure class="image mt-4">
+      <img src="static/images/4.PNG" alt="Overview for RQ2">
+    </figure>
+    <p class="mt-4">
+      These evaluations test our hypothesis that VLMs rely more on prior anatomical knowledge than on image content in two ways:
+    </p>
+    <!-- Arrowed points -->
+    <p class="mt-2">→ First, when VLMs have access to anatomical names, GPT-4o, Pixtral, and Gemma3 produce more anatomically correct answers than image-based correct answers. This indicates a reliance on prior knowledge, as an anatomically correct answer can only stem from prior knowledge within the language part.</p>
+    <p class="mt-2">→ Second, when anatomical names are removed—forcing the models to rely solely on image content—GPT-4o, Pixtral, and Gemma3 achieve high accuracies when evaluated based on the image view.</p>
+    <!-- Closing sentence -->
+    <p class="mt-2">
+      These findings support our hypothesis for GPT-4o, Pixtral, and Gemma3 but do not provide strong evidence for JanusPro and Llama 3.2.
+    </p>
 
   </div>
 </section>
