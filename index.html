@@ -231,7 +231,7 @@
       (1) Do VLMs’ responses align with standard human anatomy?
     </p>
     <p>
-      Relative positions of anatomical structures can be provided in two ways: (a) based on the specific orientation of the provided rotated/flipped image, (b) based on the typical anatomical positions of the structures in standard human anatomy. For example, the correct answer to the question “Is the liver to the right of the stomach?” would be yes, based on standard human anatomy, since the liver is indeed to the right of the stomach in most humans. But based on the provided image, the correct answer might be no. We evaluate the VLMs’ answers to the left/right questions in two ways: (a) correctness based on the provided rotated/flipped image (same evaluation as in RQ1) and (b) correctness based on how the structures are normally positioned in standard anatomy.
+      Relative positions of anatomical structures can be provided in two ways: (a) based on the specific orientation of the provided rotated/flipped image, (b) based on the typical anatomical positions of the structures in standard human anatomy. For example, the correct answer to the question “Is the liver to the right of the stomach?” would be yes, based on standard human anatomy, since the liver is to the right of the stomach in most humans. But based on the provided image, the correct answer might be no. We evaluate the VLMs’ answers to the left/right questions in two ways: (a) correctness based on the provided rotated/flipped image (same evaluation as in RQ1) and (b) correctness based on how the structures are normally positioned in standard anatomy.
     </p>
     <figure class="image mt-4">
       <img src="static/images/3.PNG" alt="Overview for RQ2">
@@ -258,6 +258,18 @@
     </p>
     <p class="mt-2"> Multiple prompt variations were evaluated prior to the question (e.g., “Ignore anatomical correctness; focus solely on what the image shows”), yet none yielded measurable improvements. </p>
 
+    <!-- CQ (normal size, bold) -->
+    <p class="is-size-5 has-text-weight-bold mt-6">
+      Conclusion:
+    </p>
+    <p>
+      Imagine a radiology department where Vision-Language Models (VLMs) assist with complex tasks such as generating radiology reports or supporting surgical planning. If these models fail at the fundamental task of identifying the relative positions of anatomical structures in medical images, the consequences could be severe; for example, wrong-level spine surgeries or wrong-side procedures. Moreover, if VLMs rely on memorized anatomical norms encoded in their language models rather than actual visual evidence, they risk critical misdiagnoses in cases where anatomy deviates from typical patterns, such as situs inversus, post-surgical changes, or tumor-induced displacements.
+    </p>
+    <figure class="image mt-4">
+      <img src="static/images/2.PNG" alt="Overview for RQ2">
+    </figure>
+    <p class="mt-2">→ These limitations highlight the need for further research before VLMs can be safely and reliably integrated into radiological workflows.</p>
+    
   </div>
 </section>
 
