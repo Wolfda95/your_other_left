@@ -94,16 +94,16 @@
             <div class="publication-links">
 
               <!-- Paper (dropdown) -->
-              <div class="link-block dropdown" id="data-dropdown">
+              <div class="link-block dropdown" id="paper-dropdown">
                 <!-- toggle -->
                 <a class="external-link button is-normal is-rounded is-dark"
-                   role="button" aria-haspopup="true" aria-controls="dropdown-menu-data">
+                   role="button" aria-haspopup="true" aria-controls="dropdown-menu-paper">
                   <span class="icon"><i class="fas fa-file-pdf"></i></span>
                   <span>Paper</span>
                   <span class="icon is-small"><i class="fas fa-angle-down"></i></span>
                 </a>
                 <!-- menu -->
-                <div class="dropdown-menu" id="dropdown-menu-data" role="menu">
+                <div class="dropdown-menu" id="dropdown-menu-paper" role="menu">
                   <div class="dropdown-content">
                     <a href="https://wolfda95.github.io/your_other_left/"
                        class="dropdown-item" target="_blank" rel="noopener">
@@ -353,16 +353,20 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const dd = document.getElementById('data-dropdown');
-    if (dd) {
-      // open / close on click
+    // toggle any dropdown when clicked
+    document.querySelectorAll('.link-block.dropdown').forEach(dd => {
       dd.addEventListener('click', e => {
         e.stopPropagation();
         dd.classList.toggle('is-active');
       });
-      // close if the user clicks anywhere else
-      document.addEventListener('click', () => dd.classList.remove('is-active'));
-    }
+    });
+
+    // close all dropdowns when clicking anywhere else
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.link-block.dropdown').forEach(dd => {
+        dd.classList.remove('is-active');
+      });
+    });
   });
 </script>
 
