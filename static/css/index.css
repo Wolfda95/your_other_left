@@ -8,6 +8,24 @@ body {
   vertical-align: top;         /* align baseline with other buttons */
 }
 
+/* 1) Make every dropdown-item text flush left */
+.link-block.dropdown .dropdown-item {
+  text-align: left;
+  /* Bulma default is padding: .5rem 1rem; you can reduce the left padding if you want */
+  padding-left: 0.75rem; 
+}
+
+/* 2) Remove the container’s extra padding (optional) */
+.link-block.dropdown .dropdown-content {
+  padding: 0;
+}
+
+/* 3) Shrink the menu to fit its contents (optional) */
+.link-block.dropdown .dropdown-menu {
+  min-width: auto;       /* cancel Bulma’s default min-width */
+  width: fit-content;    /* make the width only as big as it needs to be */
+}
+
 .footer .icon-link {
     font-size: 25px;
     color: #000;
