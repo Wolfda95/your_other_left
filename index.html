@@ -92,24 +92,30 @@
                ############################################################ -->
           <div class="column has-text-centered">
             <div class="publication-links">
-          
-              <!-- Paper -->
-              <span class="link-block">
-                <a href="https://wolfda95.github.io/your_other_left/"
-                   class="external-link button is-normal is-rounded is-dark">
+
+              <!-- Paper (dropdown) -->
+              <div class="link-block dropdown" id="data-dropdown">
+                <!-- toggle -->
+                <a class="external-link button is-normal is-rounded is-dark"
+                   role="button" aria-haspopup="true" aria-controls="dropdown-menu-data">
                   <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                  <span>MICCAI</span>
+                  <span>Paper</span>
+                  <span class="icon is-small"><i class="fas fa-angle-down"></i></span>
                 </a>
-              </span>
-          
-              <!-- arXiv -->
-              <span class="link-block">
-                <a href="https://arxiv.org/pdf/2508.00549"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="ai ai-arxiv"></i></span>
-                  <span>arXiv</span>
-                </a>
-              </span>
+                <!-- menu -->
+                <div class="dropdown-menu" id="dropdown-menu-data" role="menu">
+                  <div class="dropdown-content">
+                    <a href="https://wolfda95.github.io/your_other_left/"
+                       class="dropdown-item" target="_blank" rel="noopener">
+                      MICCAI&nbsp;Proceedings
+                    </a>
+                    <a href="https://arxiv.org/pdf/2508.00549"
+                       class="dropdown-item" target="_blank" rel="noopener">
+                      arXiv&nbsp;PDF
+                    </a>
+                  </div>
+                </div>
+              </div>
 
               <!-- Code -->
               <span class="link-block">
