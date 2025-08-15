@@ -335,13 +335,150 @@
             for a step-by-step guide to downloading the dataset and running inference on the VLMs.
           </strong>
         </p>
+
+        <!-- Leaderboard (Excel-driven) -->
+        <div id="leaderboard" class="mt-5">
+          <h3 class="title is-4">Leaderboard</h3>
+        
+          <div class="table-container" style="overflow-x:auto;">
+            <table id="leaderboard-table" class="table is-fullwidth is-striped is-hoverable is-narrow leaderboard-table">
+              <thead></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        
+          <p class="is-size-7 has-text-grey mt-2">Source: Excel sheet in the repository. Sections show model categories.</p>
+        </div>
+        
+        <!-- SheetJS (reads the Excel file in the browser) -->
+        <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+        
+        <style>
+          /* Make table header sticky and style section dividers */
+          #leaderboard .leaderboard-table thead th {
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 2;
+          }
+          #leaderboard .section-divider {
+            background: #f5f5f5;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+          }
+          #leaderboard .section-divider th {
+            border-top: 2px solid #dbdbdb;
+            border-bottom: 2px solid #dbdbdb;
+          }
+        </style>
+        
+        <script>
+          (async function buildLeaderboard() {
+            // === Adjust this path if needed ===
+            const EXCEL_URL = 'static/images/Leaderboard_percent_with_avg.xlsx';
+        
+            // Model groups (edit names/order here later if needed)
+            const MODEL_GROUPS = [
+              { label: 'Proprietary', models: ['GPT4o'] },
+              { label: 'Open',        models: ['Pixtral 12b','Gemma 3 12b','LLaVa_Mistral 7b','LLaVa_Vicuna 7b','JanusPro 7b','Llama 3.2 11b'] },
+              { label: 'Medical',     models: ['MedGemma 4b'] }
+            ];
+        
+            // Fetch Excel and parse
+            let wb;
+            try {
+              const res = await fetch(EXCEL_URL);
+              const buf = await res.arrayBuffer();
+              wb = XLSX.read(buf, { type: 'array' });
+            } catch (e) {
+              console.error('Failed to load leaderboard Excel:', e);
+              document.querySelector('#leaderboard-table tbody').innerHTML =
+                '<tr><td>Failed to load leaderboard data.</td></tr>';
+              return;
+            }
+        
+            // Use first sheet, all columns
+            const ws = wb.Sheets[wb.SheetNames[0]];
+            const rows = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '', raw: false });
+        
+            if (!rows || rows.length === 0) return;
+        
+            const header = rows[0];
+            const data = rows.slice(1);
+        
+            // Find the column containing the model name (try "model", else first column)
+            const modelColIdx = (function () {
+              const idx = header.findIndex(h => String(h).toLowerCase().trim() === 'model');
+              return idx >= 0 ? idx : 0;
+            })();
+        
+            // Build a lookup map from model name (case-insensitive) -> full row
+            const byModel = new Map();
+            data.forEach(r => {
+              const key = String(r[modelColIdx] || '').trim().toLowerCase();
+              if (key) byModel.set(key, r);
+            });
+        
+            // Render header
+            const thead = document.querySelector('#leaderboard-table thead');
+            const hdrTr = document.createElement('tr');
+            header.forEach(h => {
+              const th = document.createElement('th');
+              th.textContent = h;
+              hdrTr.appendChild(th);
+            });
+            thead.appendChild(hdrTr);
+        
+            // Helper to create a full-width divider row
+            function addDividerRow(tbody, label) {
+              const tr = document.createElement('tr');
+              tr.className = 'section-divider';
+              const th = document.createElement('th');
+              th.colSpan = header.length;
+              th.textContent = label;
+              tr.appendChild(th);
+              tbody.appendChild(tr);
+            }
+        
+            // Helper to create a data row from an array (matching header length)
+            function addDataRow(tbody, rowArray) {
+              const tr = document.createElement('tr');
+              for (let c = 0; c < header.length; c++) {
+                const td = document.createElement('td');
+                td.textContent = rowArray[c] ?? '';
+                tr.appendChild(td);
+              }
+              tbody.appendChild(tr);
+            }
+        
+            // Render body following your custom order + dividers
+            const tbody = document.querySelector('#leaderboard-table tbody');
+        
+            MODEL_GROUPS.forEach(group => {
+              addDividerRow(tbody, group.label);
+        
+              group.models.forEach(name => {
+                const key = String(name).trim().toLowerCase();
+                const row = byModel.get(key);
+        
+                if (row) {
+                  const padded = row.slice(0, header.length);
+                  while (padded.length < header.length) padded.push('');
+                  addDataRow(tbody, padded);
+                } else {
+                  // If not found in Excel, show placeholder row (still editable later)
+                  const placeholder = Array.from({ length: header.length }, (_, i) =>
+                    i === modelColIdx ? name : '—'
+                  );
+                  addDataRow(tbody, placeholder);
+                  console.warn(`Model "${name}" not found in Excel; inserted placeholder row.`);
+                }
+              });
+            });
+          })();
+        </script>
       
-        <p class="is-size-5 has-text-weight-bold mt-6">
-        Video on how to use the Dataset and Code
-        </p>
-        <p>
-        Coming soon
-        </p>
       
     </div>
   </div>
