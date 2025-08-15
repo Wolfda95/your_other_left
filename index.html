@@ -354,6 +354,19 @@
         <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
         
         <style>
+          /* Center columns 2..N (header + body) */
+          #leaderboard-table th:nth-child(n+2),
+          #leaderboard-table td:nth-child(n+2) {
+            text-align: center;
+          }
+        
+          /* Keep the first (model) column left-aligned */
+          #leaderboard-table th:first-child,
+          #leaderboard-table td:first-child {
+            text-align: left;
+            white-space: nowrap; /* optional: keeps model names on one line */
+          }
+          
           /* Make table header sticky and style section dividers */
           #leaderboard .leaderboard-table thead th {
             position: sticky;
@@ -376,7 +389,7 @@
         <script>
           (async function buildLeaderboard() {
             // === Adjust this path if needed ===
-            const EXCEL_URL = 'static/images/Leaderboard_percent_with_avg.xlsx';
+            const EXCEL_URL = 'static/images/Leaderboard_Webpage.xlsx';
         
             // Model groups (edit names/order here later if needed)
             const MODEL_GROUPS = [
