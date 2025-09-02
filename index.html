@@ -324,8 +324,6 @@
     <div class="video is-16by9">
       <iframe
         class="has-ratio"
-        width="640"
-        height="360"
         src="https://www.youtube.com/embed/l0aIRUR4HmE?rel=0"
         title="Your other Left! – Vision-Language Models Fail to Identify Relative Positions in Medical Images"
         frameborder="0"
@@ -564,19 +562,43 @@
     <h2 class="title">Funding</h2>
 
     <style>
-      /* keep pairs together and add a tidy gap */
+      /* --- Base styling (desktop & tablet) --- */
       .logo-pair {
         display: inline-flex;
         align-items: center;
         gap: 16px;
       }
-      /* keep logos small and consistent */
+
       #logos img {
         max-height: 60px;
         height: auto;
         width: auto;
+        max-width: 100%; /* never overflow a column */
         object-fit: contain;
         display: block;
+      }
+
+      /* --- Responsive adjustments for phones --- */
+      @media (max-width: 768px) {
+        /* prevent horizontal overflow from Bulma columns */
+        #logos .columns {
+          margin-left: 0;
+          margin-right: 0;
+        }
+
+        /* each logo column takes full width on phones */
+        #logos .column.is-narrow {
+          flex: 0 0 100%;
+          max-width: 100%;
+        }
+
+        /* stack paired logos vertically and center them */
+        .logo-pair {
+          display: grid;
+          grid-auto-flow: row;
+          justify-items: center;
+          gap: 12px;
+        }
       }
     </style>
 
