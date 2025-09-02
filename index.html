@@ -585,19 +585,24 @@
           margin-left: 0;
           margin-right: 0;
         }
-
+      
         /* each logo column takes full width on phones */
         #logos .column.is-narrow {
           flex: 0 0 100%;
           max-width: 100%;
         }
-
-        /* stack paired logos vertically and center them */
+      
+        /* stack paired logos vertically and left-align them */
         .logo-pair {
-          display: grid;
-          grid-auto-flow: row;
-          justify-items: center;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start; /* align with single logos */
           gap: 12px;
+        }
+      
+        /* safety: logos never stretch too wide */
+        .logo-pair img {
+          max-width: 100%;
         }
       }
     </style>
