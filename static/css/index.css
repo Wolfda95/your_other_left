@@ -2,6 +2,17 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
+/* --- Responsive video hardening --- */
+.video iframe,
+iframe[src*="youtube"] {
+  width: 100% !important;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  display: block;
+}
+
+
 /* Make the dropdown behave like the inline buttons beside it */
 .publication-links .dropdown {
   display: inline-block;       /* stay on one line */
