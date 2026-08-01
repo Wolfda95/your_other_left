@@ -385,6 +385,7 @@
           </div>
         
           <p class="is-size-7 has-text-grey mt-2">Mean accuracy (%) averaged over three runs. As this is a binary classification task, random chance corresponds to 50%.</p>
+          <p class="is-size-7 has-text-grey mt-2">Reasoning Budget denotes the maximum number of thinking tokens the model was allowed to generate before answering.</p>
           <p class="is-size-7 has-text-grey mt-2">The exact numbers of correct and incorrect answers, as well as other metrics such as the F1 score, can be downloaded here: 
             <a href="https://github.com/Wolfda95/MIRP_Benchmark/tree/main/our_results" 
                target="_blank" rel="noopener" 
@@ -437,9 +438,10 @@
         
             // Model groups (edit names/order here later if needed)
             const MODEL_GROUPS = [
-              { label: 'Proprietary', models: ['GPT4o'] },
-              { label: 'Open',        models: ['Pixtral 12b','Gemma 3 12b','LLaVa Mistral 7b','LLaVa Vicuna 7b','JanusPro 7b','Llama 3.2 11b'] },
-              { label: 'Medical',     models: ['MedGemma 4b'] }
+              { label: 'Proprietary',    models: ['GPT4o'] },
+              { label: 'Open',           models: ['Qwen 3.5 9b','Gemma 4 27b-a4b','Pixtral 12b','Gemma 3 12b','LLaVa Mistral 7b','LLaVa Vicuna 7b','JanusPro 7b','Llama 3.2 11b'] },
+              { label: 'Open Reasoning', models: ['Qwen 3.5 9b (Reasoning Budget: 4096 Tokens)','Gemma 4 27b-a4b (Reasoning Budget: 4096 Tokens)','Gemma 4 27b-a4b (Reasoning Budget: 2048 Tokens)','Qwen 3.5 9b (Reasoning Budget: 2048 Tokens)'] },
+              { label: 'Medical',        models: ['MedGemma 1.5 4b','MedGemma 4b'] }
             ];
         
             // Fetch Excel and parse
