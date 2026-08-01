@@ -34,6 +34,24 @@
   <link rel="stylesheet" href="./static/css/index.css">
 
   <!-- ############################################################
+     # Small credit / attribution text
+     ############################################################ -->
+  <style>
+    .credits {
+      font-size: 0.7rem;
+      line-height: 1.4;
+      color: #7a7a7a;
+      text-align: left;
+      max-width: 780px;
+      margin: 1.25rem auto 0 auto;
+    }
+    .credits a {
+      color: #7a7a7a;
+      text-decoration: underline;
+    }
+  </style>
+
+  <!-- ############################################################
      #Picture in Tab: [ToDo: Freistellen]
      ############################################################ -->
   <link rel="icon" href="./static/images/UniUlm.PNG">
@@ -250,7 +268,7 @@
       We introduce a dataset of over 4,000 CT slices, each paired with a question about the relative position of two visible anatomical structures. The slices are randomly flipped and rotated.
     </p>
     <figure class="image mt-4">
-      <img src="static/images/1.png" alt="Overview for RQ1">
+      <img src="static/images/1.PNG" alt="Overview for RQ1">
     </figure>
     <p class="mt-2">→ All models fail at this basic task</p>
 
@@ -262,7 +280,7 @@
        Given the high accuracy of segmentation models, we try to support the vision-language models by placing visual markers on the two relevant structures, derived from segmentation outputs. 
     </p>
     <figure class="image mt-4">
-      <img src="static/images/2.png" alt="Overview for RQ2">
+      <img src="static/images/2.PNG" alt="Overview for RQ2">
     </figure>
     <p class="mt-2">→ Markers bring no significant improvements</p>
 
@@ -277,7 +295,7 @@
       Relative positions of anatomical structures can be provided in two ways: (a) based on the specific orientation of the provided rotated/flipped image, (b) based on the typical anatomical positions of the structures in standard human anatomy. For example, the correct answer to the question “Is the liver to the right of the stomach?” would be yes, based on standard human anatomy, since the liver is to the right of the stomach in most humans. But based on the provided image, the correct answer might be no. We evaluate the VLMs’ answers to the left/right questions in two ways: (a) correctness based on the provided rotated/flipped image (same evaluation as in RQ1) and (b) correctness based on how the structures are normally positioned in standard anatomy.
     </p>
     <figure class="image mt-4">
-      <img src="static/images/31.png" alt="Overview for RQ2">
+      <img src="static/images/31.PNG" alt="Overview for RQ2">
     </figure>
     <p class="has-text-weight-bold mt-5">
       (2) How well do VLMs perform when prior knowledge cannot be used?
@@ -286,7 +304,7 @@
       Fot this evaluation we modify the questions so that models are given only visual markers with no reference to anatomical structures. 
     </p>
     <figure class="image mt-4">
-      <img src="static/images/4.png" alt="Overview for RQ2">
+      <img src="static/images/4.PNG" alt="Overview for RQ2">
     </figure>
     <p class="mt-4">
       These evaluations test our hypothesis that VLMs rely more on prior anatomical knowledge than on image content in two ways:
@@ -365,6 +383,9 @@
             </a> 
             for a step-by-step guide to downloading the dataset and running inference on the VLMs.
           </strong>
+        </p>
+        <p class="mt-2">
+          The MIRP dataset is derived from the AMOS dataset (Ji et al., 2022, <a href="https://doi.org/10.5281/zenodo.7155725" target="_blank" rel="noopener" style="color: #3273dc; text-decoration: underline;">10.5281/zenodo.7155725</a>) and is distributed under the <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" style="color: #3273dc; text-decoration: underline;">CC BY 4.0</a> License.
         </p>
 
       <br>
@@ -698,7 +719,19 @@
 <footer class="footer">
   <div class="container">
     <div class="content has-text-centered">
-      This website is adapted from <a href="https://nerfies.github.io/">Nerfies</a>.
+      <p>
+        This website is adapted from <a href="https://nerfies.github.io/">Nerfies</a>, used under
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.
+      </p>
+
+      <p class="credits">
+        <strong>Image and Media Credits.</strong>
+        The logos of OpenAI, Mistral AI, DeepSeek, Meta, and Google Gemma used in the figures on this page are trademarks or registered trademarks of their respective owners. Their inclusion is strictly for academic identification purposes and does not imply any affiliation with or endorsement by these entities.
+        Sample images were obtained from the AMOS dataset (Ji et al., 2022, <a href="https://doi.org/10.5281/zenodo.7155725" target="_blank" rel="noopener">10.5281/zenodo.7155725</a>) and are used under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>; the slices were modified (cropped, rotated, flipped, and annotated).
+        The anatomy book image “Stock Anatomy Book Vector And Icon” from <a href="https://www.vectorportal.com" target="_blank" rel="noopener">Vectorportal.com</a> is used under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> License.
+        The image of a medical doctor was generated with OpenAI’s DALL·E 2.
+        The audio summary on this page was generated with Google NotebookLM.
+      </p>
     </div>
   </div>
 </footer>
